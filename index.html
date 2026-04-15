@@ -1,1 +1,62 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Finance Dashboard</title>
+  <link rel="stylesheet" href="stylea.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<h1>💰 Personal Finance Dashboard</h1>
+
+<!-- Filters -->
+<div class="box">
+  <select id="filterType" onchange="updateUI()">
+    <option value="all">All</option>
+    <option value="monthly">Monthly</option>
+    <option value="yearly">Yearly</option>
+  </select>
+
+  <input type="month" id="monthFilter" onchange="updateUI()">
+  <input type="number" id="yearFilter" placeholder="Year" onchange="updateUI()">
+</div>
+
+<!-- Form -->
+<div class="box">
+  <select id="type">
+    <option value="income">Income</option>
+    <option value="expense">Expense</option>
+  </select>
+
+  <input type="number" id="amount" placeholder="Amount">
+  <input type="text" id="category" placeholder="Category">
+  <input type="date" id="date">
+
+  <button onclick="addTransaction()">Add</button>
+  <button onclick="updateTransaction()" id="updateBtn" style="display:none;">Update</button>
+</div>
+
+<!-- Transactions -->
+<div class="box">
+  <h3>Transactions</h3>
+  <ul id="list"></ul>
+</div>
+
+<!-- Summary -->
+<div class="box">
+  <p>Income: ₹<span id="income">0</span></p>
+  <p>Expense: ₹<span id="expense">0</span></p>
+  <p>Balance: ₹<span id="balance">0</span></p>
+</div>
+
+<!-- Charts -->
+<div class="charts">
+  <canvas id="pieChart"></canvas>
+  <canvas id="lineChart"></canvas>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
